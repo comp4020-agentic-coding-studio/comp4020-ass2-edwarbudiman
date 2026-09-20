@@ -1,46 +1,18 @@
 # Process overview
 
-<!-- TEMPLATE: this file is a shape to fill in, not a form. Replace everything
-     in it with your own overview, and delete this comment — `pnpm
-     check:evidence` will remind you if it's still here. -->
-
-Written by you, for a reader: how you got from the brief to the harness and
-agentic workflow behind this submission. Markers read this file and follow its
-citations; they don't trawl the repo for evidence you didn't point at.
-
-This file is the shape; the course site's
-[assessment page](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/topics/assessment/#what-you-submit)
-is the requirement, and its
-[word counts](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/topics/assessment/#word-counts)
-cover every deliverable.
-
 ## What I built
 
-One paragraph: the thing, and the idea behind it.
+I built a course about learning in an era when information is easy to access. The idea came from a question I kept returning to: if an LLM can explain almost anything, what kind of learning helps us actually understand the material?
 
 ## How I got here
 
-The account of the process: how the work actually went, and how you knew the
-result was right. Tell it in whatever order makes it clear. A weekly prototype
-needs a paragraph or two; an assignment needs more.
+I began by discussing the idea with ChatGPT using Sol at medium reasoning effort. Through that back-and-forth conversation, I explored what a course should offer if an LLM can answer every question. This brought me back to a question I had raised in class: how do people develop an understanding of the material and its context? My starting point was that reading about something cannot fully replace experiencing it. I used the conversation to shape a course around what it means to learn under these conditions. (fec78)
 
-Cite the record as you go, as links whose text is the commit hash or range and
-whose target is this repo's commit or compare URL, so a reader clicks straight
-to the evidence:
+To develop the course material, I created four agent roles: a course designer, a university committee representative, a student, and a moderator. I used Herdr to let the agents communicate by sending commands between terminal tabs. I asked them to discuss the course from their different perspectives and give feedback on its direction. I then used the results of that discussion to create a map of the course material. (fec78...6591)
 
-- one commit: [`a1b2c3d`](https://github.com/YOUR-ORG/YOUR-REPO/commit/a1b2c3d)
-- a range:
-  [`a1b2c3d...e4f5a6b`](https://github.com/YOUR-ORG/YOUR-REPO/compare/a1b2c3d...e4f5a6b)
+With the course map in place, I used Claude to draft the lecture content. I manually reviewed the drafts and asked for help revising passages that were unclear. (47616)
 
-To pair a prompt with the commit it produced, quote the prompt (curated, not a
-full transcript) next to the citation:
-
-> the prompt, verbatim
-
-Screenshots are welcome where one carries the point better than a sentence does.
-Commit the file to this repo and link it with a **relative** path, which is what
-makes it render on GitHub: `![alt text](docs/before.png)`. Images don't count
-towards the word count and don't replace the citation.
+The final step was to refine the visual presentation of the content.
 
 ## Before you ship
 
