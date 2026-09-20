@@ -11,3 +11,58 @@
  * slide class you reach for (`_class: quote`), a code-heavy layout, a
  * background. */
 @import url("astro-theme-university/styles/deck.css");
+
+/* Course design: the question leads; evidence and interpretation sit together.
+ * Retain SlopU colours and Public Sans from the supplied theme. */
+.reveal .slides section h1 {
+  display: block;
+  background: none;
+  padding: 0;
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+.reveal .slides section h2 {
+  max-width: 24ch;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+}
+.reveal .slides section.impact {
+  text-align: left;
+}
+.reveal .slides section.impact p {
+  font-size: 2.1rem;
+  max-width: 40ch;
+}
+.reveal .slides .evidence-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-block: 2rem;
+}
+.reveal .slides .evidence-pair > div {
+  border-inline-start: 0.25rem solid var(--at-primary);
+  padding-inline-start: 1.25rem;
+}
+.reveal .slides .evidence-pair h3 {
+  font-size: 1.65rem;
+  margin-block-end: 0.75rem;
+}
+.reveal .slides .source-note {
+  font-size: 1.15rem;
+  line-height: 1.45;
+  max-width: 75ch;
+  color: var(--at-text-secondary);
+  margin-block-start: 1.5rem;
+}
+.reveal .slides .reading-entry {
+  margin-block-end: 1.5rem;
+}
+.reveal .slides .reading-entry p {
+  font-size: 1.4rem;
+  margin-block-start: 0.5rem;
+}
+.reveal .slides section.investigation {
+  border-block-start: 0.6rem solid var(--at-primary);
+}
