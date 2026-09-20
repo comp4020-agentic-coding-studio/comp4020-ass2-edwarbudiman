@@ -7,11 +7,10 @@ affiliation: Slop University School of Invented Disciplines
 role: tutor
 email: idris.fenn@slop.university
 contact: Ask during sessions, or email when a question cannot wait until the next one.
-photo: ./idris-fenn.avif
-photoAlt: A stylised portrait of a person facing the viewer, flat gold and black shapes on warm cream, in a two-ink risograph print
 ---
 
-<!-- STARTER_CONTENT: replace this person entry, then remove this comment. -->
-
-Replace this entry. A second person makes the listing, role ordering and
-teacher-reference fields visible before you replace the cast with your own.
+Runs the first review of every weekly submission — the pass that checks
+whether a reconstruction actually stands without its source, before the
+convenor sees it. Came to SlopU from an assessment-design background rather
+than the subject matter itself, on the theory that judging evidence of
+understanding is its own skill, separable from the thing being understood.

@@ -193,7 +193,7 @@ was unnecessary.
 
 ## 10. A comparison worth sitting with
 
-| | Source, closed before performance | Collaborator, open during performance |
+| Aspect | Source, closed before performance | Collaborator, open during performance |
 | --- | --- | --- |
 | Week 2's zip example | Theo's explanation came entirely from what was inside him at the moment of speaking, whatever its quality. | Not applicable — no collaborator was present. |
 | This week's bee example | Not applicable — the source stayed open. | A fluent, correct answer to Nadia's hardest question tells you less about Theo specifically than the same fluency would have told you in Week 2. |
