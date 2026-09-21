@@ -30,5 +30,6 @@ export const siteConfig = defineSiteConfig({
 
   licence: "CC-BY-NC-SA-4.0",
   socialImage: "/src/assets/images/card.png",
-  socialImageAlt: `A preview card for ${courseMeta.code}: ${courseMeta.title}`,
+  socialImageAlt:
+    "Seven horizontal gold rungs of decreasing width stacked and receding, on a split warm cream and black background, in a two-ink risograph print",
 });

@@ -189,8 +189,8 @@ argument so no environment setup is needed:
 ```
 
 The key is read from `--token`, `--token-file` or `$ANTHROPIC_AUTH_TOKEN`, in
-that order. Its argument parsing and error paths were exercised offline against
-a local port; **no request has ever been sent to strproxy** — see §6.
+that order. **Both target images have since been generated for real** — see §6,
+which replaces the earlier "never executed" status.
 
 Draft prompts, in the established idiom:
 
@@ -202,11 +202,18 @@ Draft prompts, in the established idiom:
   and black on warm cream, no text: a wide abstract composition of overlapping
   open books and speech shapes, half in silhouette, grainy risograph texture."
 
+**Correction from the actual run:** a literal hex code in the prompt
+(`#b97d1c`) made `flux-schnell` hallucinate pseudo-text ("31togl.99.", "b97d1c.")
+in the image corners, even with "no text" also in the prompt. Describing colour
+in words ("warm gold and black") instead of hex fixed it — keep hex codes out of
+prompts entirely, not just alongside "no text".
+
 Generated output needs three things before it lands: crop to the exact
 dimensions, convert (`.avif` for the hero, `.png` for the card — ImageMagick is
 already on this machine), and **new alt text written to describe what was
 actually generated**, not the prompt. Ask the model for text and it will produce
-letterforms that are not letters; keep "no text" in every prompt.
+letterforms that are not letters; keep "no text" in every prompt, and keep hex
+colour codes out of it too.
 
 ---
 
@@ -223,19 +230,31 @@ letterforms that are not letters; keep "no text" in every prompt.
 
 ---
 
-## 6. Open items and what is not verified
+## 6. Open items and what is now verified
 
-- **No course key is present.** `~/.claude/settings.json` has no `env` block and
-  `ANTHROPIC_AUTH_TOKEN` is unset in the shell, so nothing can authenticate to
-  strproxy from this session. The image endpoint was never reached, and
-  `scripts/gen-image.sh` has never run.
-- **The agent shell cannot reach strproxy.** `strproxy.comp.anu.edu.au` resolves
-  and answers ICMP, but HTTPS times out from the sandboxed tool shell while
-  `https://example.com` returns 200 — an egress restriction, not an outage.
-  Run the wrapper from your own terminal.
-- Whether `flux-schnell` accepts a size or aspect-ratio parameter is unknown;
-  `GET /api/images/models` should say. The wrapper passes only model and prompt.
-- Every image decision above is editorial. No slide was rendered, no figure
-  drawn, no fit or legibility checked.
+- **Resolved: a course key exists and strproxy is reachable — from a normal
+  terminal.** `card.png` and `hero-home.avif` have both been generated for
+  real via `flux-schnell` and landed at `src/assets/images/`, replacing the
+  starter files. `scripts/gen-image.sh --models` and a direct generation call
+  both succeeded once a key from the course proxy (`ANTHROPIC_BASE_URL` +
+  `ANTHROPIC_AUTH_TOKEN`) was present in the environment.
+- **Still true: the agent's own sandboxed tool shell cannot reach strproxy.**
+  `strproxy.comp.anu.edu.au` resolves and answers ICMP, but HTTPS still times
+  out from that sandbox while `https://example.com` returns 200 — an egress
+  restriction, not an outage on the proxy's side. Every successful call in
+  this session went through the user's own shell (`Bash` tool with an
+  explicit key), not the agent's restricted network path.
+- **Resolved: `flux-schnell` does accept a `size` parameter** — confirmed via
+  a direct `curl` call, not through the wrapper. `GET /api/images/models`
+  advertises `1024x1024`, `1024x1792`, `1792x1024`; requesting `1792x1024`
+  actually returns `1344x768` (same aspect, capped resolution). Neither of the
+  two target sizes (1200×630, 2560×1086) is offered directly, so both were
+  generated at the closest wide aspect and cropped/resized locally.
+- **Gap found and not yet fixed: `scripts/gen-image.sh` never sends a `size`
+  parameter**, so it always gets the square 1024×1024 default. The two real
+  generations in this pass bypassed the wrapper with raw `curl` calls to get
+  a wide aspect. Adding a `-s/--size` flag to the wrapper would close this.
+- Every other image decision above is still editorial. No slide was rendered,
+  no figure drawn, no fit or legibility checked.
 - Any CSS needed to place a figure on a slide is a change to
   `src/decks/theme.css`, which is an integration-session file.

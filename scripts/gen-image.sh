@@ -10,7 +10,11 @@
 # order. --token puts the key in your shell history and in `ps` output; prefer
 # --token-file or the environment variable on a shared machine.
 #
-# Drafted, never executed: the agent shell has no key and cannot reach the host.
+# Run this from your own terminal, not the agent's tool shell: the agent's
+# sandboxed shell cannot reach strproxy even with a key set (see
+# docs/imagery-plan.md §6). Note it never sends a `size` param, so generations
+# come back at the default 1024x1024 square — pass a raw curl call if you need
+# a specific aspect ratio.
 set -euo pipefail
 
 host="${STRPROXY_HOST:-https://strproxy.comp.anu.edu.au}"
