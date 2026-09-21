@@ -2,24 +2,18 @@
 
 ## What I built
 
-I built a course about learning in an era when information is easy to access. The idea came from a question I kept returning to: if an LLM can explain almost anything, what kind of learning helps us actually understand the material?
+I built a course about learning in an era when information is easy to access and explanations are increasingly cheap. The idea came from a question I kept returning to: **if an LLM can explain almost anything, what kind of learning helps us actually understand the material?**
+
+For me, a good university course should not simply provide information. It should create situations where students have to work with knowledge, test what they think they understand, and recognise the gaps in that understanding. This became the central idea of the course: **consumption can produce familiarity, but reconstruction is needed to test understanding.**
 
 ## How I got here
 
-I began by discussing the idea with ChatGPT using Sol at medium reasoning effort. Through that back-and-forth conversation, I explored what a course should offer if an LLM can answer every question. This brought me back to a question I had raised in class: how do people develop an understanding of the material and its context? My starting point was that reading about something cannot fully replace experiencing it. I used the conversation to shape a course around what it means to learn under these conditions. (fec78)
+I began by discussing the course idea with ChatGPT using Sol at medium reasoning effort. That back-and-forth explored what a course should offer when an LLM can answer many of the questions students traditionally ask. It returned me to a question I had raised in class: how do people develop an understanding of material and its context? My starting point was that reading an explanation cannot fully replace experiencing, reconstructing, and applying an idea. The conversation turned a broad interest in "learning how to learn" into a specific course about testing understanding through reconstruction. ([`fec786b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-edwarbudiman/commit/fec786b))
 
-To develop the course material, I created four agent roles: a course designer, a university committee representative, a student, and a moderator. I used Herdr to let the agents communicate by sending commands between terminal tabs. I asked them to discuss the course from their different perspectives and give feedback on its direction. I then used the results of that discussion to create a map of the course material. (fec78...6591)
+I did not want the structure to come entirely from one conversation. To challenge it, I created four agent roles — course designer, university committee, student, moderator — and used Herdr to let them communicate between terminal tabs, each examining the proposed course from its own angle. Their discussion exposed questions about academic substance, student experience, and whether the weeks formed a progression rather than independent topics, which I used when mapping the 12-week course. ([`fec786b...6591c13`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-edwarbudiman/compare/fec786b...6591c13))
 
-With the course map in place, I used Claude to draft the lecture content. I manually reviewed the drafts and asked for help revising passages that were unclear. (47616)
+Once the course map was established, I used Claude to draft lecture content. I treated those drafts as material to evaluate rather than finished lectures. I reviewed some content manually and also used LLM comparisons between week *n* and week *n+1* to check whether concepts introduced in one week meaningfully prepared students for the next. When those transitions were weak, I asked Claude to revise them. This iterative process was intended to protect the course's central idea across the semester instead of optimising individual weeks in isolation. ([`4761694`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-edwarbudiman/commit/4761694))
 
-The final step was to refine the visual presentation of the content.
+The final stage was meant to produce visuals through the course's image proxy, but the agent shell could not reach `strproxy.comp.anu.edu.au`, so `card.png`/`hero-home.avif` are placeholder art built locally with ImageMagick in the same two-ink idiom, and the staff portraits were deleted rather than kept as starter images — a decision the starter's own check explicitly allows. That pass also cleared the remaining starter gaps: homepage copy, the policies page, the three in-course assessments (A1/A2/A3 plus in-class activity, 30/30/30/10, replacing the starter's 40/60 split), and the course's real identity in `course-config.ts`. ([`39a4edf`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-edwarbudiman/commit/39a4edf))
 
-## Before you ship
-
-`pnpm check:evidence` verifies that this comment is gone, that your citations
-resolve to real commits, that a crit week's reflection entry is in
-`reflections/`, and that your `CLAUDE.md` is there. It checks that your account
-is traceable, not that it is good: that is the marker's call.
-
-Images aren't checked: unlike a citation whose SHA doesn't resolve, a broken
-image is visible the moment this file is rendered on GitHub.
+Across these stages I used agents for generation, comparison, and criticism, while keeping course coherence and whether material actually belonged in the course as my own judgement. The image gap is the clearest case: rather than let a "generated via the API" claim stand once the proxy proved unreachable, I recorded what actually happened and left real generation as a documented follow-up instead.
